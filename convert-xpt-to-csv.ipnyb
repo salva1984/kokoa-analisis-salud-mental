@@ -1,0 +1,10 @@
+## Convertir
+
+import pandas as pd
+
+df = pd.read_sas("data/DR1TOT_H.xpt", format="xport")
+
+df.to_csv("data/dr1tot_h.csv", index=False)
+
+print(df.head())
+
