@@ -5,7 +5,7 @@
 git clone <url-del-repositorio>
 cd kokoa-analisis-salud-mental
 ### 2. Crear el entorno virtual
-python -m venv venv
+python -m venv venv 
 
 ###3. Activar el entorno virtual
 ### En Windows:
