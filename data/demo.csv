@@ -1,4 +1,4 @@
-ID,Genero,Edad,Etnia,Nivel_Educativo,Estado_Civil,Ratio_Pobreza,Servicio_Militar,Ratio_Pobreza_Faltante
+SEQN,Genero,Edad,Etnia,Nivel_Educativo,Estado_Civil,Ratio_Pobreza,Servicio_Militar,Ratio_Pobreza_Faltante
 73557.0,1.0,69.0,4.0,3.0,4.0,0.84,1.0,0
 73558.0,1.0,54.0,3.0,3.0,1.0,1.78,2.0,0
 73559.0,1.0,72.0,3.0,4.0,1.0,4.51,1.0,0
