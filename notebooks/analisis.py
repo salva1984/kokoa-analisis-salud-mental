@@ -20,7 +20,7 @@ parejas_redundantes = []
 for i in range(len(matriz_corr_abs.columns)):
     for j in range(i + 1, len(matriz_corr_abs.columns)):
         coeficiente = matriz_corr_abs.iloc[i, j]
-        if coeficiente > 0.85:
+        if coeficiente > 0.80:
             parejas_redundantes.append({
                 'Variable 1': matriz_corr_abs.columns[i],
                 'Variable 2': matriz_corr_abs.columns[j],
