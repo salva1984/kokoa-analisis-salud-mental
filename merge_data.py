@@ -8,7 +8,7 @@ def merge_cleaned_datasets():
         "data/mcq.csv",
         "data/paq.csv",
         "data/whq.csv",
-        "data/limpieza_G2/BMX_H_LIMPIO.csv",
+        "data/processed/bmx_limpio.csv",
         "data/limpieza_G2/DBQ_H_LIMPIO.csv",
         "data/processed/dr1tot_limpio.csv",
         "data/limpieza_G2/DUQ_H_limpio.csv",
