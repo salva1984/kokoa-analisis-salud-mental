@@ -31,4 +31,6 @@ for i in range(len(matriz_corr_abs.columns)):
 df_pares = pd.DataFrame(parejas_redundantes).sort_values(by='Correlación', ascending=False)
 print("--- PAREJAS ALTAMENTE CORRELACIONADAS (> 0.85) ---")
 print(df_pares.to_string(index=False))
+print(df.info())
+print(df.head())
 # %%
