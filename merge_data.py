@@ -18,9 +18,22 @@ def merge_cleaned_datasets():
         "data/limpieza_G3/smq_limpio.csv"
     ]
     
-    existing_files = [f for f in files if os.path.exists(f)]
-    print(f"Archivos encontrados para unir: {len(existing_files)}")
+    existing_files = []
     
+    # Nuevo bloque de validación individual
+    for f in files:
+        if os.path.exists(f):
+            existing_files.append(f)
+        else:
+            print(f"⚠️ Advertencia: Archivo no encontrado -> {f}")
+            
+    print(f"\nArchivos encontrados para unir: {len(existing_files)}")
+    
+    # Seguro adicional por si no hay ningún archivo
+    if not existing_files:
+        print("Error: No hay archivos disponibles para el merge. Terminando ejecución.")
+        return
+
     merged_df = None
     
     for file_path in existing_files:
@@ -44,23 +57,25 @@ def merge_cleaned_datasets():
     merged_df = merged_df.dropna(subset=['SEQN'])
     
     # 2. FILTRO DE EDAD: Solo mayores de 18 años
-    # Buscamos la columna de edad respetando mayúsculas/minúsculas según el estándar de NHANES
     col_edad = next((c for c in merged_df.columns if c.upper() == 'EDAD'), None)
     
     if col_edad:
         antes = len(merged_df)
-        # Usamos .loc para evitar el SettingWithCopyWarning y asegurar la integridad
         merged_df = merged_df.loc[merged_df[col_edad] >= 18]
         despues = len(merged_df)
         print(f"Filtro aplicado ({col_edad} >= 18): Se eliminaron {antes - despues} registros.")
     else:
-        print("Advertencia: No se encontró la columna de edad (RIDAGEYR) para filtrar.")
+        print("Advertencia: No se encontró la columna de edad para filtrar.")
 
-    # Ordenar por SEQN y guardar manteniendo el formato original de las columnas
+    # Ordenar por SEQN y guardar
     merged_df = merged_df.sort_values('SEQN')
     print(f"Dataset final unido: {merged_df.shape}")
     
     output_path = "data/dataset_completo.csv"
+    
+    # Aseguramos que la carpeta de destino exista antes de guardar
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
     merged_df.to_csv(output_path, index=False)
     print(f"Dataset guardado en {output_path}")
 
