@@ -3,19 +3,20 @@ import os
 
 def merge_cleaned_datasets():
     files = [
-        "data/demo.csv",
-        "data/alq.csv",
-        "data/mcq.csv",
-        "data/paq.csv",
-        "data/whq.csv",
+        "data/processed/demo_limpio.csv",
+        "data/processed/alq_limpio.csv",
+        "data/processed/mcq_limpio.csv",
+        "data/processed/paq_limpio.csv",
+        "data/processed/whq_limpio.csv",
         "data/processed/bmx_limpio.csv",
         "data/processed/dbq_limpio.csv",
+        "data/processed/dpq_limpio.csv",
         "data/processed/dr1tot_limpio.csv",
         "data/processed/duq_limpio.csv",
-        "data/limpieza_G3/dlq_limpio.csv",
-        "data/limpieza_G3/ocq_limpio.csv",
-        "data/limpieza_G3/slq_limpio.csv",
-        "data/limpieza_G3/smq_limpio.csv"
+        "data/processed/dlq_limpio.csv",
+        "data/processed/ocq_limpio.csv",
+        "data/processed/slq_limpio.csv",
+        "data/processed/smq_limpio.csv"
     ]
     
     existing_files = []
