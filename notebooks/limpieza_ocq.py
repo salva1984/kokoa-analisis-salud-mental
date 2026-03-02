@@ -97,3 +97,9 @@ filas_con_nulos
 # %%
 # son pocos nulos, dropeamos
 ocq.dropna(inplace=True)
+# %%
+ocq.isna().sum()
+# %%    
+ocq.to_csv("../data/processed/ocq_limpio.csv", index=False)
+# %%
+#

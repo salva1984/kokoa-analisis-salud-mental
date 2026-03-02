@@ -97,6 +97,9 @@ df[cols_duq] = df[cols_duq].fillna(-4.0)
 # ==========================================
 # 6. VERIFICACIÓN Y EXPORTACIÓN
 # ==========================================
+# Dropear las columnas auxiliares que trajimos para cruces y lógica
+df = df.drop(columns=['score_depresion', 'RIDAGEYR'])
+
 print("--- Estado Final del Dataset ---")
 df.info()
 
@@ -104,3 +107,6 @@ print("\nDistribución de Rehabilitación (DUQ430):")
 print(df['DUQ430'].value_counts().sort_index())
 
 df.to_csv("../data/processed/duq_limpio.csv", index=False)
+print("\n¡Archivo duq_limpio.csv guardado con éxito sin columnas auxiliares!")
+
+# %%

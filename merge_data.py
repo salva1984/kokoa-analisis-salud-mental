@@ -20,7 +20,7 @@ def merge_cleaned_datasets():
     
     existing_files = []
     
-    # Nuevo bloque de validación individual
+    # Bloque de validación individual
     for f in files:
         if os.path.exists(f):
             existing_files.append(f)
@@ -58,7 +58,6 @@ def merge_cleaned_datasets():
     
     # 2. FILTRO DE EDAD: Solo mayores de 18 años
     col_edad = next((c for c in merged_df.columns if c.upper() == 'EDAD'), None)
-    
     if col_edad:
         antes = len(merged_df)
         merged_df = merged_df.loc[merged_df[col_edad] >= 18]
@@ -67,9 +66,27 @@ def merge_cleaned_datasets():
     else:
         print("Advertencia: No se encontró la columna de edad para filtrar.")
 
+    # =========================================================================
+    # 3. FILTRO DE DEPRESIÓN: Fuente de verdad absoluta (Si no estás, CHAO)
+    # =========================================================================
+    
+    # TODO: Escribe aquí el nombre EXACTO de tu columna del score de depresión
+    col_depresion = 'score_depresion' 
+    
+    if col_depresion in merged_df.columns:
+        antes_dep = len(merged_df)
+        # Dropna elimina cualquier fila que tenga NaN en el score de depresión
+        merged_df = merged_df.dropna(subset=[col_depresion])
+        despues_dep = len(merged_df)
+        print(f"Filtro aplicado (Depresión como verdad absoluta): Se eliminaron {antes_dep - despues_dep} registros sin score. CHAO.")
+    else:
+        print(f"⚠️ Error/Advertencia: No se encontró la columna '{col_depresion}'. Revisa el nombre.")
+
+    # =========================================================================
+
     # Ordenar por SEQN y guardar
     merged_df = merged_df.sort_values('SEQN')
-    print(f"Dataset final unido: {merged_df.shape}")
+    print(f"\nDataset final unido: {merged_df.shape}")
     
     output_path = "data/dataset_completo.csv"
     
