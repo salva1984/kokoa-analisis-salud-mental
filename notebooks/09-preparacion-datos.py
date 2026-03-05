@@ -74,7 +74,7 @@ cols_a_texto = [
     'Etnia', 'Nivel_Educativo', 'Estado_Civil', 'DBQ700', 'DRQSDIET', 
     'DUQ200', 'DUQ240', 'DUQ370', 'DUQ430', 'OCD150', 'OCD231', 'OCD241', 
     'OCD390G', 'OCD391', 'OCD392', 'OCQ210', 'OCQ260', 'SMQ020', 'SMQ040', 
-    'SMQ078', 'SMQ670'
+    'SMQ078', 'SMQ670','SLQ50', 'SLQ060'
 ]
 
 # 4. Convertimos a string
@@ -86,3 +86,7 @@ for col in cols_a_texto:
 df = pd.get_dummies(df, drop_first=True)
 df.to_csv("../data/processed/dataset_final_dummies.csv", index=False)
 print(f"Data lista para el modelo. Dimensiones de df: {df.shape}")
+# %%
+df.info()
+#
+# %%

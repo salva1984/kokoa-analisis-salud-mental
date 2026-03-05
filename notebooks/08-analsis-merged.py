@@ -89,6 +89,16 @@ def limpieza_profunda_nhanes(df):
     for col in duq_qual: df_clean[col] = df_clean[col].fillna(9)
     for col in duq_quant: df_clean[col] = df_clean[col].fillna(-1)
 
+    slq_qual = ['SLQ50', 'SLQ060']
+    slq_quant = ['SLD10H']
+    for col in slq_qual:
+        if col in df_clean.columns:
+            df_clean[col] = df_clean[col].fillna(9)
+    for col in slq_quant:
+        if col in df_clean.columns:
+            df_clean[col] = df_clean[col].fillna(-1)
+            
+
     # 7. BLOQUE ALCOHOL
     alc_qual = ['Consumio_Alcohol']
     alc_num = ['Promedio_Tragos_Dia', 'Dias_Consumo_Anual', 
